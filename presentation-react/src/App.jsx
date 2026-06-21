@@ -129,17 +129,17 @@ const chapters = [
   },
 ];
 
-const slideTuneStorageKey = "avsha-slide-panel-tunes";
+const slideTuneStorageKey = "avsha-slide-panel-tunes-v2";
 const slideImageStorageKey = "avsha-slide-panel-images";
 
 const defaultSlideTune = {
-  top: 132,
-  inlineStart: 86,
-  width: 1220,
-  titleSize: 46,
+  top: 128,
+  inlineStart: 54,
+  width: 1040,
+  titleSize: 40,
   leadSize: 21,
-  statSize: 40,
-  opacity: 66,
+  statSize: 34,
+  opacity: 72,
   blur: 18,
 };
 
@@ -562,6 +562,16 @@ function ChapterSection({ chapter, index, heroContentVisible, isActive }) {
   const hasFullBleedImage = Boolean(backgroundImage) && !isHero;
   const isManual = chapter.layout === "manualBand";
   const reverse = index % 2 === 0 && !isHero;
+  const panelClasses = [
+    "copyPanel",
+    "motion",
+    "copyMotion",
+    chapter.tags ? "hasTags" : "",
+    chapter.stats ? "hasStats" : "",
+    chapter.quote ? "hasQuote" : "",
+    chapter.comparison ? "hasComparison" : "",
+    chapter.bullets ? "hasBullets" : "",
+  ].filter(Boolean).join(" ");
 
   return (
     <section
@@ -591,7 +601,7 @@ function ChapterSection({ chapter, index, heroContentVisible, isActive }) {
       )}
       <div className={`chapterGrid ${hasFullBleedImage ? "fullBleedGrid" : ""} ${isManual ? "manualGrid" : ""} ${reverse ? "reverse" : ""}`}>
         {!isHero && !hasFullBleedImage && !isManual && <VisualSlot text={chapter.visual} index={index} tone={chapter.tone} image={chapter.image} />}
-        <div className="copyPanel motion copyMotion">
+        <div className={panelClasses}>
           <span className="kicker motion childMotion">{chapter.kicker}</span>
           <h1 className="motion childMotion">{chapter.title}</h1>
           <p className="lead motion childMotion">{chapter.lead}</p>
