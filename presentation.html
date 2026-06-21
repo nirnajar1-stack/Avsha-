@@ -1,0 +1,1060 @@
+<!doctype html>
+<html lang="he" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>אבשה פתרונות אריזה | מצגת שיקום</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Assistant:wght@300;400;500;600;700;800;900&family=Bebas+Neue&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #050505;
+      --panel: rgba(14, 14, 14, 0.78);
+      --panel-solid: #101010;
+      --cream: #f2f0e8;
+      --muted: rgba(242, 240, 232, 0.68);
+      --faint: rgba(242, 240, 232, 0.38);
+      --hairline: rgba(255, 255, 255, 0.12);
+      --hairline-soft: rgba(255, 255, 255, 0.07);
+      --gold: #c9a84c;
+      --gold-soft: rgba(201, 168, 76, 0.12);
+      --danger: #d96d5f;
+      --green: #7bbf89;
+      --nav-h: 86px;
+    }
+
+    * { box-sizing: border-box; }
+    html {
+      scroll-behavior: smooth;
+      background: var(--bg);
+      width: 100%;
+      max-width: 100%;
+      overflow-x: hidden;
+    }
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--cream);
+      font-family: "Assistant", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      overflow-x: hidden;
+      width: 100%;
+      max-width: 100%;
+      selection: var(--gold) var(--bg);
+    }
+
+    ::selection { background: var(--gold); color: var(--bg); }
+
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      z-index: -3;
+      background:
+        radial-gradient(circle at 18% 24%, rgba(201,168,76,0.15), transparent 25%),
+        radial-gradient(circle at 84% 68%, rgba(255,255,255,0.06), transparent 30%),
+        #050505;
+    }
+
+    .noise {
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: 80;
+      opacity: 0.08;
+      mix-blend-mode: overlay;
+      background-image:
+        repeating-linear-gradient(0deg, rgba(255,255,255,0.25) 0, rgba(255,255,255,0.25) 1px, transparent 1px, transparent 3px);
+    }
+
+    .topbar {
+      position: fixed;
+      z-index: 70;
+      inset-inline: 24px;
+      top: 18px;
+      max-width: calc(100vw - 48px);
+      height: var(--nav-h);
+      display: grid;
+      grid-template-columns: 1fr auto 1fr;
+      align-items: center;
+      gap: 18px;
+      border: 1px solid var(--hairline);
+      background: rgba(0, 0, 0, 0.55);
+      backdrop-filter: blur(18px);
+      padding: 0 28px;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      min-width: 0;
+      color: var(--cream);
+      text-decoration: none;
+    }
+
+    .brand-mark {
+      width: 42px;
+      height: 42px;
+      border: 1px solid rgba(201,168,76,0.4);
+      display: grid;
+      place-items: center;
+      color: var(--gold);
+      font-family: "Bebas Neue", "Assistant", sans-serif;
+      font-size: 24px;
+      letter-spacing: 0.02em;
+      direction: ltr;
+    }
+
+    .brand-title {
+      font-weight: 900;
+      letter-spacing: -0.01em;
+      white-space: nowrap;
+    }
+
+    .brand-sub {
+      color: var(--faint);
+      font-size: 13px;
+      margin-top: 2px;
+      white-space: nowrap;
+    }
+
+    .chapter-nav {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 22px;
+    }
+
+    .chapter-nav a {
+      color: var(--muted);
+      text-decoration: none;
+      font-size: 13px;
+      font-weight: 800;
+      letter-spacing: 0.02em;
+      transition: color 180ms ease;
+    }
+
+    .chapter-nav a:hover,
+    .chapter-nav a:focus-visible {
+      color: var(--gold);
+      outline: none;
+    }
+
+    .nav-cta {
+      justify-self: end;
+      color: #050505;
+      background: var(--gold);
+      text-decoration: none;
+      font-weight: 900;
+      padding: 12px 18px;
+      font-size: 13px;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+    }
+
+    .progress {
+      position: fixed;
+      z-index: 75;
+      top: calc(18px + var(--nav-h));
+      inset-inline: 24px;
+      height: 2px;
+      background: rgba(255,255,255,0.08);
+    }
+
+    .progress span {
+      display: block;
+      height: 100%;
+      width: 0%;
+      background: var(--gold);
+      transition: width 90ms linear;
+    }
+
+    .scroll-hint {
+      position: fixed;
+      z-index: 60;
+      inset-inline-end: 34px;
+      bottom: 34px;
+      writing-mode: vertical-rl;
+      color: var(--faint);
+      font-size: 12px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+    }
+
+    main {
+      position: relative;
+      z-index: 1;
+      width: 100%;
+      max-width: 100vw;
+      overflow-x: hidden;
+    }
+
+    .section {
+      min-height: 100vh;
+      position: relative;
+      width: 100%;
+      max-width: 100vw;
+      display: grid;
+      align-items: center;
+      padding: 138px clamp(26px, 5vw, 72px) 54px;
+      border-bottom: 1px solid var(--hairline-soft);
+      isolation: isolate;
+    }
+
+    .section.hero {
+      min-height: 100vh;
+      padding-top: 132px;
+      overflow: hidden;
+    }
+
+    .section.alt {
+      background: rgba(255,255,255,0.018);
+    }
+
+    .section.gold-band {
+      background: var(--gold);
+      color: #050505;
+    }
+
+    .hero-visual {
+      position: absolute;
+      inset: 0;
+      z-index: -2;
+      opacity: 0.72;
+      background:
+        linear-gradient(90deg, rgba(5,5,5,0.9), rgba(5,5,5,0.42), rgba(5,5,5,0.92)),
+        url("https://images.unsplash.com/photo-1519003722824-194d4455a60c?auto=format&fit=crop&w=2200&q=82") center / cover;
+    }
+
+    .hero-visual::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(0deg, #050505 0%, transparent 42%, rgba(5,5,5,0.2) 100%);
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 0.8fr) minmax(360px, 0.95fr);
+      gap: clamp(34px, 5vw, 82px);
+      align-items: end;
+      width: 100%;
+      max-width: 1480px;
+      margin: 0 auto;
+    }
+
+    .story-grid {
+      display: grid;
+      grid-template-columns: minmax(420px, 1.22fr) minmax(320px, 0.78fr);
+      gap: clamp(28px, 4vw, 70px);
+      align-items: center;
+      width: 100%;
+      max-width: 1480px;
+      margin: 0 auto;
+    }
+
+    .story-grid.reverse {
+      grid-template-columns: minmax(320px, 0.78fr) minmax(420px, 1.22fr);
+    }
+
+    .story-grid.reverse .visual-panel { order: 2; }
+    .story-grid.reverse .copy-panel { order: 1; }
+
+    .visual-panel {
+      min-height: clamp(520px, 72vh, 760px);
+      border: 1px solid var(--hairline);
+      position: relative;
+      overflow: hidden;
+      background:
+        linear-gradient(135deg, rgba(255,255,255,0.05), rgba(255,255,255,0.018)),
+        rgba(255,255,255,0.035);
+    }
+
+    .visual-panel.large {
+      min-height: clamp(620px, 82vh, 860px);
+    }
+
+    .visual-panel::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(135deg, transparent 0 49%, rgba(255,255,255,0.05) 49.2% 49.7%, transparent 50% 100%),
+        radial-gradient(circle at 28% 22%, rgba(201,168,76,0.14), transparent 30%);
+      pointer-events: none;
+    }
+
+    .photo-placeholder {
+      position: absolute;
+      inset: 26px;
+      border: 1px dashed rgba(242,240,232,0.36);
+      display: flex;
+      flex-direction: column;
+      justify-content: end;
+      padding: 34px;
+      background: rgba(0,0,0,0.16);
+    }
+
+    .photo-placeholder .slot {
+      color: var(--gold);
+      font-weight: 900;
+      font-size: 22px;
+      margin-bottom: 8px;
+    }
+
+    .photo-placeholder p {
+      color: var(--muted);
+      max-width: 460px;
+      font-size: 20px;
+      line-height: 1.36;
+    }
+
+    .visual-label {
+      position: absolute;
+      inset-inline-start: 26px;
+      top: 24px;
+      z-index: 2;
+      direction: ltr;
+      font-family: "Bebas Neue", "Assistant", sans-serif;
+      color: rgba(242,240,232,0.14);
+      font-size: clamp(96px, 13vw, 190px);
+      line-height: 0.75;
+      letter-spacing: 0.02em;
+    }
+
+    .copy-panel {
+      max-width: 650px;
+    }
+
+    .kicker {
+      color: var(--gold);
+      font-size: 13px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      font-weight: 900;
+      margin-bottom: 20px;
+    }
+
+    h1, h2, h3, p { margin: 0; }
+
+    h1 {
+      font-size: clamp(62px, 8vw, 126px);
+      line-height: 0.91;
+      letter-spacing: -0.014em;
+      max-width: 920px;
+      font-weight: 900;
+    }
+
+    h2 {
+      font-size: clamp(44px, 5.5vw, 82px);
+      line-height: 0.96;
+      letter-spacing: -0.012em;
+      font-weight: 900;
+      max-width: 900px;
+    }
+
+    h3 {
+      font-size: 28px;
+      line-height: 1.04;
+      letter-spacing: -0.006em;
+      font-weight: 900;
+    }
+
+    .lead {
+      margin-top: 26px;
+      color: var(--muted);
+      font-size: clamp(23px, 2.1vw, 34px);
+      line-height: 1.28;
+      max-width: 820px;
+      font-weight: 400;
+    }
+
+    .micro {
+      color: var(--faint);
+      font-size: 15px;
+      line-height: 1.45;
+      margin-top: 18px;
+    }
+
+    .chips {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 34px;
+    }
+
+    .chip {
+      border: 1px solid rgba(201,168,76,0.34);
+      background: rgba(201,168,76,0.1);
+      color: var(--gold);
+      padding: 10px 14px;
+      font-size: 15px;
+      font-weight: 900;
+    }
+
+    .metric-strip {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      border: 1px solid var(--hairline);
+      margin-top: 44px;
+      background: rgba(0,0,0,0.38);
+    }
+
+    .metric {
+      padding: 25px 24px;
+      border-inline-start: 1px solid var(--hairline-soft);
+      min-height: 155px;
+    }
+
+    .metric:last-child { border-inline-start: 0; }
+
+    .num {
+      direction: ltr;
+      font-family: "Bebas Neue", "Assistant", sans-serif;
+      color: var(--gold);
+      font-size: clamp(60px, 6vw, 92px);
+      line-height: 0.82;
+      letter-spacing: 0.02em;
+      display: block;
+      margin-bottom: 14px;
+    }
+
+    .metric strong {
+      display: block;
+      font-size: 23px;
+      line-height: 1.05;
+      margin-bottom: 7px;
+    }
+
+    .metric span:not(.num) {
+      color: var(--muted);
+      font-size: 17px;
+      line-height: 1.32;
+    }
+
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 16px;
+      margin-top: 34px;
+    }
+
+    .card {
+      border: 1px solid var(--hairline-soft);
+      background: rgba(255,255,255,0.045);
+      padding: 24px;
+      min-height: 142px;
+    }
+
+    .card.feature {
+      background: var(--gold-soft);
+      border-color: rgba(201,168,76,0.35);
+    }
+
+    .card .label {
+      display: block;
+      color: var(--faint);
+      font-size: 14px;
+      margin-bottom: 10px;
+      font-weight: 800;
+    }
+
+    .card .value {
+      display: block;
+      color: var(--cream);
+      font-size: 25px;
+      line-height: 1.12;
+      font-weight: 900;
+    }
+
+    .card p {
+      color: var(--muted);
+      font-size: 18px;
+      line-height: 1.36;
+      margin-top: 12px;
+    }
+
+    .big-list {
+      display: grid;
+      gap: 18px;
+      margin-top: 34px;
+    }
+
+    .big-item {
+      display: grid;
+      grid-template-columns: 56px minmax(0, 1fr);
+      gap: 18px;
+      align-items: start;
+      padding: 22px 0;
+      border-bottom: 1px solid var(--hairline-soft);
+    }
+
+    .big-item b {
+      direction: ltr;
+      color: var(--gold);
+      font-family: "Bebas Neue", "Assistant", sans-serif;
+      font-size: 48px;
+      line-height: 0.9;
+      font-weight: 400;
+    }
+
+    .big-item strong {
+      display: block;
+      color: var(--cream);
+      font-size: 25px;
+      line-height: 1.08;
+      margin-bottom: 8px;
+    }
+
+    .big-item span {
+      color: var(--muted);
+      font-size: 20px;
+      line-height: 1.36;
+    }
+
+    .quote-panel {
+      border-inline-start: 5px solid var(--gold);
+      padding-inline-start: 34px;
+      margin-top: 36px;
+      font-size: clamp(34px, 4vw, 62px);
+      line-height: 1.04;
+      letter-spacing: -0.01em;
+      font-weight: 900;
+      max-width: 980px;
+    }
+
+    .client-wall {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 12px;
+      margin-top: 40px;
+    }
+
+    .client {
+      min-height: 112px;
+      border: 1px solid var(--hairline-soft);
+      background: rgba(255,255,255,0.045);
+      display: grid;
+      place-items: center;
+      text-align: center;
+      padding: 18px;
+      font-size: 22px;
+      font-weight: 900;
+      line-height: 1.08;
+    }
+
+    .damage-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 0.95fr) minmax(0, 1.05fr);
+      gap: 22px;
+      align-items: stretch;
+      margin-top: 42px;
+    }
+
+    .impact-metric {
+      border: 1px solid rgba(201,168,76,0.36);
+      background: rgba(201,168,76,0.1);
+      padding: 36px;
+      min-height: 310px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .impact-metric .num {
+      font-size: clamp(96px, 11vw, 160px);
+    }
+
+    .impact-metric p {
+      font-size: 25px;
+      line-height: 1.25;
+      font-weight: 800;
+      max-width: 520px;
+    }
+
+    .gold-band .kicker,
+    .gold-band .num {
+      color: #050505;
+    }
+
+    .gold-band .lead,
+    .gold-band .micro,
+    .gold-band .big-item span {
+      color: rgba(5,5,5,0.7);
+    }
+
+    .gold-band .big-item {
+      border-bottom-color: rgba(5,5,5,0.18);
+    }
+
+    .gold-band .big-item strong {
+      color: #050505;
+    }
+
+    .gold-band .visual-panel {
+      background: rgba(5,5,5,0.88);
+      border-color: rgba(5,5,5,0.28);
+      color: var(--cream);
+    }
+
+    .gold-band .photo-placeholder {
+      border-color: rgba(242,240,232,0.32);
+    }
+
+    .gold-band .photo-placeholder p {
+      color: rgba(242,240,232,0.72);
+    }
+
+    .outro {
+      min-height: 100vh;
+      display: grid;
+      place-items: center;
+      text-align: center;
+      padding: 140px clamp(26px, 6vw, 90px) 80px;
+      background: #050505;
+    }
+
+    .outro h2 {
+      margin: 0 auto;
+      max-width: 1080px;
+    }
+
+    .outro .lead {
+      margin-inline: auto;
+      max-width: 760px;
+    }
+
+    .contact-line {
+      margin-top: 44px;
+      color: var(--gold);
+      font-size: 22px;
+      font-weight: 900;
+    }
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(38px);
+      transition: opacity 900ms cubic-bezier(0.16, 1, 0.3, 1), transform 900ms cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .reveal.in {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .float-num {
+      position: absolute;
+      inset-inline-end: clamp(22px, 5vw, 72px);
+      bottom: 38px;
+      direction: ltr;
+      color: rgba(242,240,232,0.08);
+      font-family: "Bebas Neue", "Assistant", sans-serif;
+      font-size: clamp(120px, 16vw, 250px);
+      line-height: 0.72;
+      z-index: -1;
+    }
+
+    @media (max-width: 1080px) {
+      .topbar {
+        grid-template-columns: 1fr auto;
+      }
+      .chapter-nav { display: none; }
+      .hero-grid,
+      .story-grid,
+      .story-grid.reverse,
+      .damage-grid {
+        grid-template-columns: 1fr;
+      }
+      .story-grid.reverse .visual-panel,
+      .story-grid.reverse .copy-panel { order: initial; }
+      .visual-panel,
+      .visual-panel.large {
+        min-height: 58vh;
+      }
+      .copy-panel { max-width: none; }
+      .client-wall { grid-template-columns: repeat(2, 1fr); }
+    }
+
+    @media (max-width: 720px) {
+      :root { --nav-h: 74px; }
+      body {
+        overflow-x: hidden;
+      }
+      .topbar {
+        inset-inline: 12px;
+        top: 12px;
+        max-width: calc(100vw - 24px);
+        padding: 0 14px;
+        grid-template-columns: 1fr;
+        overflow: hidden;
+      }
+      .brand { min-width: 0; }
+      .brand-title {
+        display: block;
+        max-width: calc(100vw - 110px);
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
+      .brand-sub { display: none; }
+      .nav-cta { display: none; }
+      .section {
+        padding: 112px 18px 42px;
+      }
+      .section.hero { min-height: 100vh; }
+      h1 {
+        font-size: clamp(42px, 16vw, 54px);
+        line-height: 0.98;
+      }
+      h2 {
+        font-size: clamp(31px, 11vw, 40px);
+        line-height: 1.02;
+      }
+      h3 { font-size: 23px; }
+      .lead {
+        font-size: 21px;
+        line-height: 1.34;
+      }
+      .metric-strip,
+      .cards,
+      .client-wall {
+        grid-template-columns: 1fr;
+      }
+      .metric,
+      .metric:last-child {
+        border-inline-start: 0;
+        border-bottom: 1px solid var(--hairline-soft);
+      }
+      .photo-placeholder {
+        inset: 16px;
+        padding: 22px;
+      }
+      .photo-placeholder p {
+        font-size: 17px;
+      }
+      .big-item {
+        grid-template-columns: 42px minmax(0, 1fr);
+        gap: 13px;
+      }
+      .big-item b {
+        font-size: 36px;
+      }
+      .big-item strong {
+        font-size: 21px;
+      }
+      .big-item span {
+        font-size: 17px;
+      }
+      .visual-label {
+        font-size: 82px;
+      }
+      .quote-panel {
+        font-size: 31px;
+      }
+      .scroll-hint { display: none; }
+    }
+
+    @media (max-width: 380px) {
+      .section {
+        padding-inline: 14px;
+      }
+      h1 {
+        font-size: 38px;
+      }
+      h2 {
+        font-size: 29px;
+      }
+      .visual-panel,
+      .visual-panel.large {
+        min-height: 64vh;
+      }
+      .metric strong,
+      .card .value {
+        font-size: 21px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="noise" aria-hidden="true"></div>
+
+  <header class="topbar">
+    <a class="brand" href="#top" aria-label="חזרה להתחלה">
+      <span class="brand-mark">A</span>
+      <span>
+        <span class="brand-title">אבשה פתרונות אריזה</span>
+        <span class="brand-sub">מצגת שיקום והערכת צרכים</span>
+      </span>
+    </a>
+    <nav class="chapter-nav" aria-label="ניווט חלקים">
+      <a href="#business">העסק</a>
+      <a href="#before">לפני 7.10</a>
+      <a href="#impact">הפגיעה</a>
+      <a href="#meaning">משמעות</a>
+      <a href="#recovery">שיקום</a>
+    </nav>
+    <a class="nav-cta" href="#ask">בקשה לפגישה</a>
+  </header>
+  <div class="progress" aria-hidden="true"><span id="progressBar"></span></div>
+  <div class="scroll-hint">Scroll</div>
+
+  <main id="top">
+    <section class="section hero" aria-label="פתיחה">
+      <div class="hero-visual" aria-hidden="true"></div>
+      <div class="hero-grid">
+        <div></div>
+        <div class="copy-panel reveal">
+          <div class="kicker">טופס איסוף מידע והערכת צרכים</div>
+          <h1>אבשה פתרונות אריזה מעץ</h1>
+          <p class="lead">סיפור עסק משפחתי מהעוטף שנפגע במלחמה, והדרך להחזיר אותו לייצור, אמון וצמיחה.</p>
+          <div class="chips">
+            <span class="chip">עסק משפחתי</span>
+            <span class="chip">עוטף עזה</span>
+            <span class="chip">חקלאות · ביטחון · ייצוא</span>
+          </div>
+          <p class="micro">איש קשר: אברהם לולו שמריז · 0545426117</p>
+        </div>
+      </div>
+      <div class="float-num">AVSHA</div>
+    </section>
+
+    <section class="section alt" id="business">
+      <div class="story-grid">
+        <div class="visual-panel large reveal">
+          <div class="visual-label">01</div>
+          <div class="photo-placeholder">
+            <span class="slot">תמונה גדולה לשקף זה</span>
+            <p>חזית העסק, המשפחה או צילום רחב מהמפעל. כאן התמונה תופסת את רוב המסך.</p>
+          </div>
+        </div>
+        <div class="copy-panel reveal">
+          <div class="kicker">מי העסק</div>
+          <h2>העסק נבנה כפתרון יצרני חכם, עם שורשים משפחתיים וחיבור ברור לעוטף עזה.</h2>
+          <p class="lead">אבשה הוקמה באוגוסט 2018 על ידי משפחת שמריז: אבי, יונתן, עידו ואלון ז״ל.</p>
+          <div class="cards">
+            <div class="card feature"><span class="label">חזון</span><span class="value">פתרונות אריזה חכמים ומותאמים</span></div>
+            <div class="card"><span class="label">ערך ליבה</span><span class="value">שיקום וחיזוק חבל הארץ</span></div>
+            <div class="card"><span class="label">פריסה</span><span class="value">פעילות בכל הארץ</span></div>
+            <div class="card"><span class="label">שנות פעילות</span><span class="value">8 שנים</span></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="story-grid reverse">
+        <div class="visual-panel reveal">
+          <div class="visual-label">02</div>
+          <div class="photo-placeholder">
+            <span class="slot">תמונה רחבה של מוצרים</span>
+            <p>משטחי עץ, ארגזי תחמושת, פרזול מתכת או מוצרים מוכנים ליציאה ללקוח.</p>
+          </div>
+        </div>
+        <div class="copy-panel reveal">
+          <div class="kicker">פעילות וייחוד</div>
+          <h2>אבשה מייצרת אריזות עץ ומשטחי נשיאה לתעשיות שבהן אמינות היא תנאי בסיס.</h2>
+          <div class="big-list">
+            <div class="big-item"><b>01</b><div><strong>משאות כבדים</strong><span>משטחי עץ מיוחדים בשילוב פרזול מתכת.</span></div></div>
+            <div class="big-item"><b>02</b><div><strong>שילוח בטוח</strong><span>מערכות עץ שמונעות טלטול בים ושומרות על סחורה.</span></div></div>
+            <div class="big-item"><b>03</b><div><strong>תעשיות חיוניות</strong><span>חקלאות, ביטחון, מזון וייצוא.</span></div></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section alt">
+      <div class="story-grid">
+        <div class="visual-panel reveal">
+          <div class="visual-label">03</div>
+          <div class="photo-placeholder">
+            <span class="slot">אפשר לשים כאן קולאז׳ לקוחות / מוצר</span>
+            <p>אם אין לוגואים רשמיים, עדיף צילום מוצר תעשייתי מאשר קיר לוגואים גנרי.</p>
+          </div>
+        </div>
+        <div class="copy-panel reveal">
+          <div class="kicker">לקוחות ושווקים</div>
+          <h2>בסיס הלקוחות מוכיח שאבשה יודעת לספק לשווקים גדולים, רגישים ותובעניים.</h2>
+          <div class="client-wall">
+            <div class="client">משרד הביטחון</div>
+            <div class="client">בתי אריזה לפירות הדר</div>
+            <div class="client">אוסם</div>
+            <div class="client">טמבור</div>
+            <div class="client">כתר</div>
+            <div class="client">כימיקלים לישראל</div>
+            <div class="client">אבן קיסר</div>
+            <div class="client">חקלאות וייצוא</div>
+          </div>
+          <div class="quote-panel">הלקוחות מרוצים ובוטחים במוצר ובחברה.</div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="before">
+      <div class="story-grid reverse">
+        <div class="visual-panel large reveal">
+          <div class="visual-label">04</div>
+          <div class="photo-placeholder">
+            <span class="slot">תמונה של המפעל לפני ההתרחבות</span>
+            <p>צילום פס ייצור, מחסן או פעילות עובדים לפני 7.10.</p>
+          </div>
+        </div>
+        <div class="copy-panel reveal">
+          <div class="kicker">תמונת מצב לפני 7.10</div>
+          <h2>לפני המלחמה העסק עבד בפריסה ארצית ותכנן קפיצת מדרגה של מקום ומכונות.</h2>
+          <div class="metric-strip">
+            <div class="metric"><span class="num">12</span><strong>עובדים</strong><span>כולל עובדים זרים.</span></div>
+            <div class="metric"><span class="num">8</span><strong>שנות פעילות</strong><span>עסק עם ניסיון מצטבר.</span></div>
+            <div class="metric"><span class="num">↑</span><strong>תכניות התרחבות</strong><span>מבנה ומכונות חדשות.</span></div>
+          </div>
+          <p class="micro">נתוני מחזור ורווחיות יושלמו מקובץ האקסל.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section alt" id="impact">
+      <div class="story-grid">
+        <div class="visual-panel large reveal">
+          <div class="visual-label">05</div>
+          <div class="photo-placeholder">
+            <span class="slot">תמונה גדולה של הפגיעה / העסק אחרי 7.10</span>
+            <p>כאן צריך ויז׳ואל חזק: נזק פיזי, סחורה שנהרסה, מפעל סגור או פתיחה מחדש.</p>
+          </div>
+        </div>
+        <div class="copy-panel reveal">
+          <div class="kicker">השפעת אירועי 7.10</div>
+          <h2>המלחמה עצרה פעילות ליותר מחצי שנה ויצרה פגיעה פיזית, תפעולית, מסחרית ואנושית.</h2>
+          <div class="damage-grid">
+            <div class="impact-metric">
+              <span class="num">6+</span>
+              <p>חודשים שבהם העסק לא היה פעיל באופן מלא.</p>
+            </div>
+            <div class="big-list" style="margin-top:0;">
+              <div class="big-item"><b>×</b><div><strong>סחורה נבזזה ונהרסה</strong><span>נזק ישיר ליכולת לספק ללקוחות.</span></div></div>
+              <div class="big-item"><b>!</b><div><strong>אמינות החברה נפגעה</strong><span>ירידה בזמני אספקה ואובדן לקוחות.</span></div></div>
+              <div class="big-item"><b>40</b><div><strong>ירידה של 40% בהזמנות</strong><span>פגיעה מסחרית שממשיכה להשפיע.</span></div></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="story-grid reverse">
+        <div class="visual-panel reveal">
+          <div class="visual-label">06</div>
+          <div class="photo-placeholder">
+            <span class="slot">תמונה רגישה ומשפחתית</span>
+            <p>תמונה של המשפחה, אלון ז״ל, או צילום שמספר את המחיר האנושי. נשתול רק לפי הנחיה שלך.</p>
+          </div>
+        </div>
+        <div class="copy-panel reveal">
+          <div class="kicker">העסק כעסק משפחתי</div>
+          <h2>הפגיעה בעסק היא גם פגיעה במנגנון משפחתי של ידע, אחריות וזיכרון.</h2>
+          <div class="cards">
+            <div class="card"><span class="label">אבי</span><span class="value">יו״ר</span></div>
+            <div class="card"><span class="label">יונתן</span><span class="value">מנכ״ל משותף</span></div>
+            <div class="card feature"><span class="label">עידו</span><span class="value">מנכ״ל, רכש, שיווק ותפעול</span></div>
+            <div class="card"><span class="label">אלון ז״ל</span><span class="value">לוגיסטיקה ומשלוחים</span></div>
+          </div>
+          <p class="lead">עובדי החברה נחטפו או נרצחו. זהו חלק מהסיפור שלא ניתן להפריד מהשיקום.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section gold-band" id="meaning">
+      <div class="story-grid">
+        <div class="visual-panel large reveal">
+          <div class="visual-label">07</div>
+          <div class="photo-placeholder">
+            <span class="slot">תמונה של העוטף / המשפחה / המפעל</span>
+            <p>הוויז׳ואל כאן צריך להעביר “למה זה חשוב” ולא רק “מה קרה”.</p>
+          </div>
+        </div>
+        <div class="copy-panel reveal">
+          <div class="kicker">משמעות העסק עבור המשפחה</div>
+          <h2>שיקום העסק הוא לא רק חזרה לייצור; הוא שמירה על חלק מה-DNA של המשפחה ומהנוף של עוטף עזה.</h2>
+          <div class="big-list">
+            <div class="big-item"><b>01</b><div><strong>להמשיך למרות הכאב</strong><span>לספק מוצרים ושירות מקצועי גם אחרי אובדן קשה.</span></div></div>
+            <div class="big-item"><b>02</b><div><strong>להחזיק עוגן אזורי</strong><span>עסק יצרני שממוקם בעוטף מתוך רצון לשקם את חבל הארץ.</span></div></div>
+            <div class="big-item"><b>03</b><div><strong>להחזיר אמון</strong><span>ללקוחות, עובדים, ספקים והמשפחה עצמה.</span></div></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section alt" id="recovery">
+      <div class="story-grid reverse">
+        <div class="visual-panel large reveal">
+          <div class="visual-label">08</div>
+          <div class="photo-placeholder">
+            <span class="slot">תמונה / הדמיה של תכנית השיקום</span>
+            <p>מבנה, מכונות, אזור ייצור, או תמונת “עתיד” שמראה חזרה לעבודה.</p>
+          </div>
+        </div>
+        <div class="copy-panel reveal">
+          <div class="kicker">תכנית שיקום עתידית</div>
+          <h2>השיקום צריך להתמקד בשלושה מוקדים ברורים: מבנה, מכונות ואנשים.</h2>
+          <div class="big-list">
+            <div class="big-item"><b>01</b><div><strong>שיפוץ והרחבת מבנה העסק</strong><span>החזרת יכולת תפעולית ובסיס להתרחבות.</span></div></div>
+            <div class="big-item"><b>02</b><div><strong>רכש מכונות חדשות</strong><span>שיפור תפוקה, איכות וזמני אספקה.</span></div></div>
+            <div class="big-item"><b>03</b><div><strong>גיוס עובדים מקצועיים</strong><span>בניית צוות יציב שיכול להחזיר את העסק למסלול.</span></div></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="outro" id="ask">
+      <div class="reveal">
+        <div class="kicker">בקשה לפגישה</div>
+        <h2>תמיכה ממוקדת יכולה להפוך עסק שנפגע קשה למסלול חזרה לעבודה, אמון וצמיחה.</h2>
+        <p class="lead">המצגת מיועדת להציג תמונת מצב מלאה לקראת משרד הכלכלה ולבסס תכנית שיקום עתידית.</p>
+        <div class="contact-line">אברהם לולו שמריז · 0545426117</div>
+        <p class="micro">להשלמה: דוא״ל תקין, מחזור שנתי מתוך האקסל, פירוט תקציבי למענק, תמונות וכתבות נבחרות.</p>
+      </div>
+    </section>
+  </main>
+
+  <script>
+    if ("scrollRestoration" in history) history.scrollRestoration = "manual";
+
+    const progressBar = document.getElementById("progressBar");
+    const revealTargets = document.querySelectorAll(".reveal");
+    const nav = document.querySelector(".topbar");
+    let lastScroll = 0;
+
+    function updateProgress() {
+      document.documentElement.scrollLeft = 0;
+      document.body.scrollLeft = 0;
+      const max = document.documentElement.scrollHeight - window.innerHeight;
+      const pct = max > 0 ? (window.scrollY / max) * 100 : 0;
+      progressBar.style.width = `${pct}%`;
+
+      const current = window.scrollY;
+      nav.style.transform = current > lastScroll && current > 160 ? "translateY(-130%)" : "translateY(0)";
+      lastScroll = Math.max(current, 0);
+    }
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) entry.target.classList.add("in");
+      });
+    }, { threshold: 0.18, rootMargin: "0px 0px -8% 0px" });
+
+    revealTargets.forEach((target) => observer.observe(target));
+    window.addEventListener("load", () => {
+      const resetTop = () => {
+        document.documentElement.scrollLeft = 0;
+        document.body.scrollLeft = 0;
+        if (!location.hash || location.hash === "#top") window.scrollTo({ top: 0, left: 0, behavior: "auto" });
+        updateProgress();
+      };
+      resetTop();
+      setTimeout(resetTop, 80);
+      setTimeout(resetTop, 240);
+    });
+    window.addEventListener("scroll", updateProgress, { passive: true });
+    window.addEventListener("resize", updateProgress);
+    updateProgress();
+  </script>
+</body>
+</html>
