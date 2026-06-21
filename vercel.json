@@ -1,0 +1,11 @@
+{
+  "installCommand": "npm --prefix presentation-react install",
+  "buildCommand": "npm --prefix presentation-react run build",
+  "outputDirectory": "presentation-react/dist",
+  "rewrites": [
+    {
+      "source": "/(.*)",
+      "destination": "/index.html"
+    }
+  ]
+}
