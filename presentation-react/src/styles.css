@@ -132,6 +132,29 @@ a {
   cursor: pointer;
 }
 
+.videoSoundToggle {
+  position: absolute;
+  z-index: 3;
+  inset-inline-start: 28px;
+  bottom: 84px;
+  border: 1px solid rgba(255, 255, 255, 0.54);
+  background: rgba(0, 149, 101, 0.82);
+  color: #fffdf7;
+  backdrop-filter: blur(10px);
+  padding: 12px 18px;
+  font: inherit;
+  font-weight: 900;
+  cursor: pointer;
+  box-shadow: 0 18px 50px rgba(0, 0, 0, 0.28);
+}
+
+.videoSoundToggle:hover,
+.videoSoundToggle:focus-visible {
+  background: rgba(0, 149, 101, 0.96);
+  outline: 3px solid rgba(255, 255, 255, 0.28);
+  outline-offset: 3px;
+}
+
 .jokeGate {
   position: fixed;
   inset: 0;

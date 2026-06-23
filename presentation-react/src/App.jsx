@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 const chapters = [
   {
@@ -393,6 +393,8 @@ function useMorphNavigation() {
 
 function IntroVideoGate({ onComplete }) {
   const [isDone, setIsDone] = useState(false);
+  const [isMuted, setIsMuted] = useState(false);
+  const videoRef = useRef(null);
 
   useEffect(() => {
     window.scrollTo({ top: 0, left: 0, behavior: "instant" });
@@ -410,19 +412,31 @@ function IntroVideoGate({ onComplete }) {
       return true;
     });
   };
+  const toggleSound = () => {
+    const video = videoRef.current;
+    if (!video) return;
+    video.muted = !video.muted;
+    video.volume = 1;
+    video.play().catch(() => {});
+    setIsMuted(video.muted);
+  };
 
   return (
     <div className={`introGate ${isDone ? "isDone" : ""}`} aria-label="סרטון פתיחה">
       <video
+        ref={videoRef}
         className="introVideo"
         src="/intro-avsha.mp4"
         autoPlay
-        muted
+        muted={isMuted}
         playsInline
         preload="auto"
         onEnded={complete}
         onError={complete}
       />
+      <button type="button" className="videoSoundToggle" onClick={toggleSound}>
+        {isMuted ? "הפעל סאונד" : "כבה סאונד"}
+      </button>
       <button type="button" className="introSkip" onClick={complete}>
         דלג למצגת
       </button>
@@ -432,6 +446,8 @@ function IntroVideoGate({ onComplete }) {
 
 function JokeVideoGate({ enabled, onComplete }) {
   const [isDone, setIsDone] = useState(!enabled);
+  const [isMuted, setIsMuted] = useState(false);
+  const videoRef = useRef(null);
 
   useEffect(() => {
     if (!enabled) {
@@ -451,22 +467,34 @@ function JokeVideoGate({ enabled, onComplete }) {
       return true;
     });
   };
+  const toggleSound = () => {
+    const video = videoRef.current;
+    if (!video) return;
+    video.muted = !video.muted;
+    video.volume = 1;
+    video.play().catch(() => {});
+    setIsMuted(video.muted);
+  };
 
   if (!enabled) return null;
 
   return (
     <div className={`jokeGate ${isDone ? "isDone" : ""}`} aria-label="סרטון בדיחה לפתיחה">
       <video
+        ref={videoRef}
         className="jokeVideo"
         src="/joke-intro.mp4"
         autoPlay
-        muted
+        muted={isMuted}
         playsInline
         preload="auto"
         onEnded={complete}
         onError={complete}
       />
       <div className="jokeBadge">רגע לפני שמתחילים...</div>
+      <button type="button" className="videoSoundToggle" onClick={toggleSound}>
+        {isMuted ? "הפעל סאונד" : "כבה סאונד"}
+      </button>
       <button type="button" className="jokeSkip" onClick={complete}>
         דלג
       </button>
