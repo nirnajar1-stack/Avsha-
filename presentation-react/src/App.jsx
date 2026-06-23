@@ -4,154 +4,119 @@ const chapters = [
   {
     id: "top",
     nav: "פתיחה",
-    kicker: "שקף 1 | פרטים כלליים ורקע",
-    title: "אבשה פתרונות אריזה מעץ",
-    lead: "עסק משפחתי מכפר עזה, שהוקם מתוך חזון לייצר פתרונות אריזה חכמים ומותאמים למגוון צרכים וחברות.",
-    visual: "תמונת פתיחה רחבה: מפעל, אריזות או צילום אווירה מהעוטף",
+    kicker: "שקף פתיחה",
+    title: "משפחת שמריז כפר עזה אבשה פתרונות אריזה",
+    lead: "",
+    visual: "תמונת פתיחה רחבה: משפחת שמריז, כפר עזה או חזית אבשה",
     theme: "hero",
     visualMode: "opening",
-    tags: ["אברהם לולו שמריז", "0545426117", "הוקם באוגוסט 2018", "עוטף עזה"],
-  },
-  {
-    id: "business",
-    nav: "המשפחה",
-    kicker: "שקף 2 | משפחת שמריז",
-    title: "מאחורי העסק עומדת משפחת שמריז, משפחה מקיבוץ כפר עזה שנעקרה מביתה וכיום מפונה לשפיים.",
-    lead: "אבי ודקלה, יונתן ונטלי עם שני ילדים, עידו ואביה עם שלוש בנות, אלון ז״ל, ורוני החיילת המשוחררת.",
-    visual: "חזית העסק, המשפחה או צילום רחב מהמפעל",
-    image: "/images/02-business-front.jpg.jpeg",
-    layout: "manualBand",
-    visualMode: "roots",
-    manualStyle: {
-      "--panel-top": "132px",
-      "--panel-inline-start": "clamp(26px, 5.6vw, 86px)",
-      "--panel-width": "min(1220px, calc(100vw - 170px))",
-      "--panel-padding": "clamp(16px, 2vw, 28px)",
-      "--panel-gap": "clamp(16px, 2.4vw, 34px)",
-      "--panel-bg": "rgba(255, 253, 247, 0.66)",
-      "--panel-blur": "18px",
-      "--title-size": "clamp(32px, 3.05vw, 46px)",
-      "--lead-size": "clamp(17px, 1.2vw, 21px)",
-      "--stat-size": "clamp(28px, 2.7vw, 40px)",
-    },
-    stats: [
-      ["כפר עזה", "בית המשפחה"],
-      ["שפיים", "מקום הפינוי כיום"],
-      ["משפחה", "הלב של העסק"],
-    ],
   },
   {
     id: "alon",
     nav: "אלון",
-    kicker: "שקף 3 | אלון שמריז ז״ל",
-    title: "אלון שמריז ז״ל, בן 26 מכפר עזה, נחטף מביתו ונורה למוות בשוגג ביום ה־70 למלחמה.",
-    lead: "אלון, יותם חיים וסאמר אל־טלאלקה הוחזקו בשבי, ניסו לאותת לכוחות צה״ל שהם חטופים, ובהמשך התקרבו ללא חולצות ועם דגל לבן.",
+    kicker: "שקף 2",
+    title: "אלון (לולו) שמריז ז”ל",
+    lead: "אלון, בן קיבוץ כפר עזה, נחטף מביתו במהלך מתקפת הטרור של ה־7 באוקטובר 2023 והוחזק בשבי חמאס ברצועת עזה במשך למעלה מחודשיים.",
     visual: "תמונה רגישה של אלון ז״ל או תמונה משפחתית, רק לפי הנחיה שלך",
     tone: "memorial",
     visualMode: "memory",
-    quote: "אלון דאג שהוא ישאר שפוי ולקח אותו על הגב שלו לכל אורך הדרך.",
+    quote: "אלון היה בן, אח, דוד וחבר אהוב. אדם בעל לב רחב, מסירות אין קץ למשפחתו ותחושת אחריות עמוקה.",
     bullets: [
-      "השלושה ניסו להבהיר את נוכחותם באמצעות שלטים עם הכיתוב \"הצילו חטופים\".",
-      "אחד הלוחמים שמע את הקריאה \"הצילו! חטופים אלון ויותם\", אך הכוחות חששו מהטעיה של מחבלים.",
-      "אבי סיפר כי אלון, בוגר יהל״ם, הצליח להוציא את חבריו מהמנהרות ופעל נכון כדי להציל אותם.",
-      "חבריו תיארו אותו כאדם שמח, חכם, מצחיק, יצירתי ובעל חוש הומור ייחודי.",
+      "במהלך תקופת השבי הפגין אלון תושייה, אומץ לב ורוח רצון יוצאי דופן.",
+      "לאחר תקופה ממושכת הצליח להימלט משוביו יחד עם יותם חיים וסאמר טלאלקה.",
+      "ב־15 בדצמבר 2023 נהרג מאש כוחות צה”ל במהלך ניסיון חבירה לכוחותינו, בתקרית טראגית שהותירה את מדינת ישראל כולה באבל.",
+      "אלון הותיר אחריו משפחה אוהבת ומלוכדת: הוריו אברהם ודקלה, אחיו יונתן ועידו, ואחותו רוני.",
+      "זכרו וערכיו ממשיכים להוביל את בני משפחתו גם כיום.",
     ],
   },
   {
-    id: "before",
-    nav: "לפני 7.10",
-    kicker: "שקף 4 | תמונת מצב לפני 7.10.2023",
-    title: "לפני המלחמה אבשה הייתה עסק פעיל עם 12 עובדים, כולל עובדים זרים, ונתונים כספיים מסודרים להשלמה מהאקסל.",
-    lead: "זהו בסיס הפעילות שממנו נמדדת הפגיעה: עסק יצרני קיים, עם עובדים, פעילות ותכניות עתידיות שנעצרו.",
-    visual: "פס ייצור, מחסן או פעילות עובדים לפני 7.10",
-    visualMode: "baseline",
-    stats: [
-      ["12", "עובדים"],
-      ["Excel", "מחזור שנתי מצורף"],
-      ["לפני 7.10", "נקודת הייחוס"],
+    id: "business",
+    nav: "העסק",
+    kicker: "שקף 3",
+    title: "אבשה פתרונות אריזה",
+    lead: "העסק היה ועודנו הרבה מעבר למקור פרנסה - הוא מפעל חיים משפחתי המבטא ערכים של עבודה קשה, ציונות, מחויבות לקהילה ואמונה בתעשייה הישראלית.",
+    visual: "חזית העסק, פעילות ייצור, אריזות עץ או תמונה משפחתית מהמפעל",
+    image: "/images/02-business-front.jpg.jpeg",
+    visualMode: "roots",
+    bullets: [
+      "אבי שמריז - יו”ר",
+      "יונתן שמריז - מנכ”ל משותף",
+      "עידו שמריז - מנכ”ל, אחראי על תחומי הרכש, השיווק והתפעול",
+      "אלון שמריז ז”ל - לוגיסטיקה ומשלוחים",
+      "חברת אבשה פתרונות אריזה היא חברה משפחתית המתמחה בפיתוח, ייצור ואספקת פתרונות אריזה מעץ חכמים ומותאמים לצרכים תעשייתיים מורכבים.",
+      "החברה מספקת פתרונות לתעשיות הביטחון, המזון, החקלאות, הטכנולוגייה והתעשייה הכבדה.",
+      "לאורך שנות פעילותה הפכה החברה לשותף מקצועי ואמין עבור גופים מרכזיים במשק.",
     ],
   },
   {
-    id: "beforeAfter",
-    nav: "לפני/אחרי",
-    kicker: "שקף 5 | לפני ואחרי 7.10",
-    title: "הפער בין העסק שלפני המלחמה לבין המציאות שאחריה הוא לב הבקשה לשיקום.",
-    lead: "אותו מפעל, אותה משפחה ואותו ידע מקצועי - אבל עם עצירת פעילות, אובדן אמון, מחסור בחומרי גלם וירידה חדה בהזמנות.",
-    visual: "אפשר לשים כאן תמונת split-screen: פעילות לפני המלחמה מול מצב העסק אחרי הפגיעה",
-    visualMode: "split",
-    comparison: [
-      ["פעילות", "ייצור שוטף ולקוחות פעילים", "יותר מחצי שנה ללא פעילות מלאה"],
-      ["הזמנות", "בסיס עסקי קיים ומתפתח", "ירידה של 40% בהזמנות"],
-      ["אמון", "שירותיות, אמינות ומקצועיות", "פגיעה בזמני אספקה ובאמינות החברה"],
-      ["צמיחה", "תכניות להרחבת מבנה ומכונות", "השקעות נעצרו והמשך הפעילות בסיכון"],
-    ],
-  },
-  {
-    id: "impact",
-    nav: "הפגיעה",
-    kicker: "שקף 6 | השפעת אירועי 7.10 על העסק",
-    title: "המלחמה עצרה את העסק ליותר מחצי שנה ופגעה בו פיזית, תפעולית, מסחרית ופיננסית.",
-    lead: "העסק נפגע מטילים, סחורה נבזזה ונהרסה, הפתיחה באפריל 2024 על ידי מתנדבים פגעה באמינות החברה, ולקוחות עזבו.",
+    id: "october",
+    nav: "7 באוקטובר",
+    kicker: "שקף 4",
+    title: "אירועי ה־7 באוקטובר",
+    lead: "אירועי ה־7 באוקטובר פגעו באופן קשה ומשמעותי בחברת אבשה ובמשפחת שמריז. במקביל להתמודדות עם חטיפתו של אלון ז”ל ולאחר מכן עם האובדן הקשה של המשפחה, ספג העסק פגיעה ישירה.",
     visual: "תמונה חזקה של נזק, סחורה, מפעל סגור או פתיחה מחדש",
     visualMode: "crisis",
-    stats: [
-      ["6+", "חודשים ללא פעילות מלאה"],
-      ["40%", "ירידה בהזמנות"],
-      ["קשה", "גיוס עובדים"],
-    ],
     bullets: [
-      "מחסור בחומרי גלם וירידה בזמני האספקה.",
-      "לקוחות עזבו ועובדי החברה נחטפו או נרצחו.",
-      "בעקבות הקשיים נלקחו הלוואות שעדיין פתוחות.",
-      "במתכונת הנוכחית יהיה קשה להמשיך ללא תכנית שיקום.",
+      "מתחם החברה נבזז על ידי פורעים וניזוק ממתקפת הטילים.",
+      "חלק מעובדי החברה נרצחו או נחטפו.",
+      "פעילות העסק הושבתה לתקופה של למעלה מחצי שנה.",
+      "לקוחות ביטלו או צמצמו הזמנות.",
+      "החברה חוותה ירידה של 40% ממחזור ההכנסות.",
+      "השילוב בין האובדן המשפחתי הכבד לבין הפגיעה העסקית יצר משבר חסר תקדים עבור המשפחה והחברה כאחד.",
     ],
     tone: "danger",
   },
   {
-    id: "missing",
-    nav: "להשלמה",
-    kicker: "שקף 7 | להשלמה",
-    title: "השקף השביעי עדיין פתוח לתוכן נוסף.",
-    lead: "אפשר להשתמש בו בהמשך לשקף משמעות העסק עבור המשפחה, נתונים כספיים, לקוחות שאבדו, או כל מסר ביניים שתרצה לחזק לפני תכנית השיקום.",
-    visual: "תמונה או נתון שיחבר בין הפגיעה לבין תכנית השיקום",
-    tone: "gold",
-    visualMode: "bridge",
-  },
-  {
-    id: "recovery",
-    nav: "שיקום",
-    kicker: "שקף 8 | תכנית עתידית",
-    title: "תכנית השיקום העתידית מתמקדת בארבעה תחומים שיחזירו לעסק יכולת ייצור, ניהול וצמיחה.",
-    lead: "המטרה היא לא רק לחזור לפעילות, אלא לבנות מחדש את התנאים שיאפשרו לאבשה לגדול, לגייס לקוחות ולייצר יציבות.",
-    visual: "מכונות, הדמיית עתיד, אזור ייצור או תמונת חזרה לעבודה",
+    id: "future",
+    nav: "פיתוח עתידי",
+    kicker: "שקף 5",
+    title: "פיתוח עסקי עתידי",
+    lead: "למרות האובדן והקשיים, משפחת שמריז בוחרת להמשיך קדימה ולפעול לשיקום העסק. עבור בני המשפחה, שיקום החברה אינו רק מהלך כלכלי - זהו המשך דרכו של אלון ז”ל והנצחת חלקו במפעל החיים המשפחתי.",
+    visual: "תמונת חזרה לעבודה, ציוד חדש, צוות מקצועי או תכנון עתידי של החברה",
     visualMode: "rebuild",
-    bullets: ["שיפור מבנה", "רכש מכונות חדש", "גיוס אנשי צוות בכירים", "גיוס לקוחות וחברות"],
+    featureCards: [
+      ["growth", "בניית תשתית לצמיחה ארוכת טווח"],
+      ["clients", "הרחבת פעילות החברה וגיוס לקוחות חדשים"],
+      ["machines", "השקעה ברכש חדש - ציוד, מכונות ותשתיות חדשות למבנה החברה"],
+      ["team", "גיוס אנשי מקצוע בתחומי השיווק, הפיתוח העסקי והאסטרטגיה"],
+    ],
+    quote: "הצלחת העסק מהווה ביטוי לחוסן, להתמדה ולבחירה בחיים גם לאחר האובדן הכבד ביותר.",
   },
 ];
 
-const slideTuneStorageKey = "avsha-slide-panel-tunes-v2";
+const slideTuneStorageKey = "avsha-slide-panel-tunes-v3";
 const slideImageStorageKey = "avsha-slide-panel-images";
+const slideGalleryStorageKey = "avsha-slide-panel-galleries";
+const presentationSettingsStorageKey = "avsha-presentation-settings";
+
+const defaultPresentationSettings = {
+  jokeIntroEnabled: true,
+};
 
 const defaultSlideTune = {
-  top: 128,
-  inlineStart: 54,
+  top: 14,
+  inlineStart: 5,
   width: 1040,
+  height: 520,
   titleSize: 40,
   leadSize: 21,
   statSize: 34,
-  opacity: 72,
+  opacity: 64,
   blur: 18,
+  textTone: 0,
 };
 
 const tuneLimits = {
-  top: [80, 520],
-  inlineStart: [0, 360],
+  top: [4, 72],
+  inlineStart: [2, 72],
   width: [520, 1480],
+  height: [260, 820],
   titleSize: [24, 78],
   leadSize: [14, 34],
   statSize: [22, 72],
-  opacity: [18, 92],
+  opacity: [0, 92],
   blur: [0, 34],
+  textTone: [0, 2],
 };
 
 function clampTuneValue(key, value) {
@@ -199,18 +164,82 @@ function loadSlideImages() {
   }
 }
 
-function buildManualStyle(tune) {
+function loadSlideGalleries() {
+  try {
+    const savedGalleries = JSON.parse(localStorage.getItem(slideGalleryStorageKey));
+    if (!savedGalleries || typeof savedGalleries !== "object") return {};
+    return savedGalleries;
+  } catch {
+    return {};
+  }
+}
+
+function loadPresentationSettings() {
+  try {
+    const savedSettings = JSON.parse(localStorage.getItem(presentationSettingsStorageKey));
+    if (!savedSettings || typeof savedSettings !== "object") return defaultPresentationSettings;
+    return { ...defaultPresentationSettings, ...savedSettings };
+  } catch {
+    return defaultPresentationSettings;
+  }
+}
+
+function buildManualStyle(tune, chapter = {}) {
+  const contentLoad =
+    (chapter.bullets?.length || 0) +
+    (chapter.featureCards?.length || 0) * 1.25 +
+    (chapter.quote ? 1.5 : 0);
+  const densityScale = Math.max(0.72, 1 - Math.max(0, contentLoad - 3) * 0.045);
+  const fitScale = Math.max(0.46, Math.min(1, tune.width / 1040, tune.height / 520) * densityScale);
+  const panelPadding = Math.round(Math.max(12, Math.min(28, 28 * fitScale)));
+  const panelGap = Math.round(Math.max(8, Math.min(24, 24 * fitScale)));
+  const textToneStyles = [
+    {
+      color: "#242522",
+      muted: "rgba(36, 37, 34, 0.74)",
+      accent: "#009565",
+      shadow: "0 1px 0 rgba(255, 253, 247, 0.64)",
+      halo: "rgba(255, 253, 247, 0.38)",
+    },
+    {
+      color: "#fffdf7",
+      muted: "rgba(255, 253, 247, 0.86)",
+      accent: "#ffffff",
+      shadow: "0 2px 18px rgba(0, 0, 0, 0.76), 0 1px 2px rgba(0, 0, 0, 0.82)",
+      halo: "rgba(0, 0, 0, 0.28)",
+    },
+    {
+      color: "#11130f",
+      muted: "rgba(17, 19, 15, 0.78)",
+      accent: "#006f4d",
+      shadow: "0 0 16px rgba(255, 253, 247, 0.92), 0 1px 0 rgba(255, 253, 247, 0.96)",
+      halo: "rgba(255, 253, 247, 0.52)",
+    },
+  ];
+  const textTone = textToneStyles[Math.round(tune.textTone)] || textToneStyles[0];
+
   return {
-    "--panel-top": `${tune.top}px`,
-    "--panel-inline-start": `${tune.inlineStart}px`,
+    "--panel-top": `${tune.top}%`,
+    "--panel-inline-start": `${tune.inlineStart}%`,
     "--panel-width": `${tune.width}px`,
-    "--panel-padding": "clamp(16px, 2vw, 28px)",
-    "--panel-gap": "clamp(16px, 2.4vw, 34px)",
+    "--panel-height": `${tune.height}px`,
+    "--panel-padding": `${panelPadding}px`,
+    "--panel-gap": `${panelGap}px`,
     "--panel-bg": `rgba(255, 253, 247, ${tune.opacity / 100})`,
     "--panel-blur": `${tune.blur}px`,
     "--title-size": `${tune.titleSize}px`,
     "--lead-size": `${tune.leadSize}px`,
     "--stat-size": `${tune.statSize}px`,
+    "--title-fit-size": `${Math.round(tune.titleSize * fitScale)}px`,
+    "--lead-fit-size": `${Math.round(tune.leadSize * fitScale)}px`,
+    "--stat-fit-size": `${Math.round(tune.statSize * fitScale)}px`,
+    "--body-fit-size": `${Math.round(Math.max(13, 23 * fitScale))}px`,
+    "--caption-fit-size": `${Math.round(Math.max(12, 16 * fitScale))}px`,
+    "--panel-text-color": textTone.color,
+    "--panel-muted-color": textTone.muted,
+    "--panel-accent-color": textTone.accent,
+    "--panel-text-shadow": textTone.shadow,
+    "--panel-text-halo": textTone.halo,
   };
 }
 
@@ -401,16 +430,65 @@ function IntroVideoGate({ onComplete }) {
   );
 }
 
-function Topbar({ progress }) {
-  const navItems = chapters.filter((chapter) =>
-    ["business", "alon", "before", "beforeAfter", "impact", "recovery"].includes(chapter.id)
+function JokeVideoGate({ enabled, onComplete }) {
+  const [isDone, setIsDone] = useState(!enabled);
+
+  useEffect(() => {
+    if (!enabled) {
+      onComplete();
+      return;
+    }
+
+    window.scrollTo({ top: 0, left: 0, behavior: "instant" });
+    const fallbackTimer = window.setTimeout(() => complete(), 14000);
+    return () => window.clearTimeout(fallbackTimer);
+  }, [enabled]);
+
+  const complete = () => {
+    setIsDone((currentValue) => {
+      if (currentValue) return currentValue;
+      window.setTimeout(onComplete, 360);
+      return true;
+    });
+  };
+
+  if (!enabled) return null;
+
+  return (
+    <div className={`jokeGate ${isDone ? "isDone" : ""}`} aria-label="סרטון בדיחה לפתיחה">
+      <video
+        className="jokeVideo"
+        src="/joke-intro.mp4"
+        autoPlay
+        muted
+        playsInline
+        preload="auto"
+        onEnded={complete}
+        onError={complete}
+      />
+      <div className="jokeBadge">רגע לפני שמתחילים...</div>
+      <button type="button" className="jokeSkip" onClick={complete}>
+        דלג
+      </button>
+    </div>
   );
+}
+
+function Topbar({ progress }) {
+  const navItems = chapters;
 
   return (
     <>
       <header className="topbar">
         <a className="brand" href="#top" aria-label="חזרה להתחלה">
-          <span className="brandMark"><BrandLogo compact /></span>
+          <span className="brandLogos">
+            <span className="brandMark imageMark">
+              <img src="/logo-top.png" alt="לוגו אבשה" />
+            </span>
+            <span className="partnerMark">
+              <img src="/logo-minhelet.png" alt="לוגו מנהלת" />
+            </span>
+          </span>
           <span>
             <span className="brandTitle">אבשה פתרונות אריזה</span>
             <span className="brandSub">React scroll story</span>
@@ -462,6 +540,79 @@ function VisualSlot({ text, index, tone, image }) {
   );
 }
 
+function FeatureIcon({ type }) {
+  const icons = {
+    growth: (
+      <>
+        <path d="M12 50h12V32h12V20h12V8h12" />
+        <path d="M48 8h12v12" />
+      </>
+    ),
+    clients: (
+      <>
+        <circle cx="24" cy="22" r="8" />
+        <circle cx="48" cy="20" r="7" />
+        <path d="M10 54c2-12 10-18 22-18s20 6 22 18" />
+        <path d="M38 38c5-4 17-3 22 9" />
+      </>
+    ),
+    machines: (
+      <>
+        <path d="M12 42h40l8 12H8l4-12z" />
+        <path d="M18 42V18h18v24" />
+        <path d="M38 42V12h14v30" />
+        <path d="M18 26h18" />
+        <circle cx="24" cy="54" r="4" />
+        <circle cx="48" cy="54" r="4" />
+      </>
+    ),
+    team: (
+      <>
+        <circle cx="32" cy="18" r="8" />
+        <circle cx="16" cy="26" r="6" />
+        <circle cx="48" cy="26" r="6" />
+        <path d="M14 54c2-13 9-20 18-20s16 7 18 20" />
+        <path d="M4 54c1-9 6-14 13-15" />
+        <path d="M60 54c-1-9-6-14-13-15" />
+      </>
+    ),
+  };
+
+  return (
+    <svg className="featureIcon" viewBox="0 0 64 64" aria-hidden="true" focusable="false">
+      {icons[type] || icons.growth}
+    </svg>
+  );
+}
+
+function SlideMedia({ images, mode = "fade" }) {
+  const mediaImages = images.filter(Boolean);
+  if (!mediaImages.length) return null;
+
+  const secondsPerImage = mode === "carousel" ? 6.4 : 7.2;
+  const animationSeconds = Math.max(mediaImages.length * secondsPerImage, 14);
+
+  return (
+    <div className={`slideMedia slideMedia-${mode}`} style={{ "--media-count": mediaImages.length }}>
+      {mediaImages.map((image, imageIndex) => (
+        <img
+          src={image}
+          alt=""
+          key={`${image.slice(0, 48)}-${imageIndex}`}
+          style={{
+            "--media-index": imageIndex,
+            "--media-duration": `${animationSeconds}s`,
+            "--media-delay": `${imageIndex * secondsPerImage}s`,
+            "--stack-rotation": `${(imageIndex - 2) * -4}deg`,
+            "--stack-x": `${(imageIndex - 1) * 4.5}vw`,
+            "--stack-y": `${(imageIndex - 1) * 2}vh`,
+          }}
+        />
+      ))}
+    </div>
+  );
+}
+
 function TuneControl({ label, value, unit = "px", onMinus, onPlus }) {
   return (
     <div className="tuneRow">
@@ -477,17 +628,73 @@ function TuneControl({ label, value, unit = "px", onMinus, onPlus }) {
   );
 }
 
-function SlideTunePanel({ tunes, images, selectedSlideId, onSelectSlide, onTune, onReset, onImageLoad, onImageClear }) {
+function EditModeToggle({ isEditMode, onToggle }) {
+  return (
+    <button
+      className={`editModeToggle ${isEditMode ? "isActive" : ""}`}
+      type="button"
+      onClick={onToggle}
+      aria-pressed={isEditMode}
+    >
+      {isEditMode ? "עריכה" : "צפייה"}
+    </button>
+  );
+}
+
+function SlideTunePanel({
+  tunes,
+  images,
+  galleries,
+  presentationSettings,
+  selectedSlideId,
+  onSelectSlide,
+  onTune,
+  onPresentationSettingsChange,
+  onReset,
+  onImageLoad,
+  onImageClear,
+  onGalleryLoad,
+  onGalleryClear,
+  onGalleryModeChange,
+}) {
   const [isOpen, setIsOpen] = useState(false);
   const selectedChapter = chapters.find((chapter) => chapter.id === selectedSlideId) || chapters[0];
   const tune = tunes[selectedChapter.id] || defaultSlideTune;
+  const gallery = galleries[selectedChapter.id] || { items: [], mode: "fade" };
   const hasCustomImage = Boolean(images[selectedChapter.id]);
+  const hasGallery = Boolean(gallery.items?.length);
   const change = (key, amount) => {
     onTune((currentTunes) => ({
       ...currentTunes,
       [selectedChapter.id]: {
         ...tune,
         [key]: clampTuneValue(key, tune[key] + amount),
+      },
+    }));
+  };
+  const setPanelShape = (shape) => {
+    const shapeValues = {
+      wide: { width: 1180, height: 440 },
+      square: { width: 720, height: 720 },
+      tall: { width: 620, height: 760 },
+      compact: { width: 820, height: 420 },
+    };
+    const nextShape = shapeValues[shape] || shapeValues.wide;
+    onTune((currentTunes) => ({
+      ...currentTunes,
+      [selectedChapter.id]: {
+        ...tune,
+        width: clampTuneValue("width", nextShape.width),
+        height: clampTuneValue("height", nextShape.height),
+      },
+    }));
+  };
+  const setTextTone = (textTone) => {
+    onTune((currentTunes) => ({
+      ...currentTunes,
+      [selectedChapter.id]: {
+        ...tune,
+        textTone: clampTuneValue("textTone", textTone),
       },
     }));
   };
@@ -502,17 +709,49 @@ function SlideTunePanel({ tunes, images, selectedSlideId, onSelectSlide, onTune,
     reader.readAsDataURL(file);
     event.target.value = "";
   };
+  const loadGallery = async (event) => {
+    const files = Array.from(event.target.files || []).filter((file) => file.type.startsWith("image/"));
+    if (!files.length) return;
+
+    const imageDataUrls = await Promise.all(
+      files.map((file) =>
+        new Promise((resolve) => {
+          const reader = new FileReader();
+          reader.addEventListener("load", () => resolve(reader.result));
+          reader.readAsDataURL(file);
+        })
+      )
+    );
+    onGalleryLoad(selectedChapter.id, imageDataUrls);
+    event.target.value = "";
+  };
 
   return (
     <aside className={`tunePanel ${isOpen ? "isOpen" : ""}`} aria-label="כוונון ידני לשקפים">
       <button className="tuneToggle" type="button" onClick={() => setIsOpen((open) => !open)}>
-        כוונון שקפים
+        כוונון
       </button>
 
       {isOpen && (
         <div className="tuneBox">
           <strong>הזזת טקסט לפי שקף</strong>
           <p>בחר שקף, כוון אותו ידנית, והערכים יישמרו בדפדפן.</p>
+
+          <div className="tuneGlobalActions">
+            <span>סרטון בדיחה בתחילת המצגת</span>
+            <button
+              type="button"
+              className={presentationSettings.jokeIntroEnabled ? "active" : ""}
+              onClick={() =>
+                onPresentationSettingsChange((currentSettings) => ({
+                  ...currentSettings,
+                  jokeIntroEnabled: !currentSettings.jokeIntroEnabled,
+                }))
+              }
+            >
+              {presentationSettings.jokeIntroEnabled ? "פעיל - לחץ לכיבוי" : "כבוי - לחץ להפעלה"}
+            </button>
+          </div>
 
           <label className="tuneSelect">
             שקף לעריכה
@@ -535,14 +774,62 @@ function SlideTunePanel({ tunes, images, selectedSlideId, onSelectSlide, onTune,
             </button>
           </div>
 
+          <div className="tuneGalleryLoader">
+            <label>
+              טעינת כמה תמונות לשקף
+              <input type="file" accept="image/*" multiple onChange={loadGallery} />
+            </label>
+
+            <label>
+              מצב תצוגה
+              <select
+                value={gallery.mode || "fade"}
+                onChange={(event) => onGalleryModeChange(selectedChapter.id, event.target.value)}
+              >
+                <option value="fade">רקע מתחלף</option>
+                <option value="gallery">גלריה</option>
+                <option value="carousel">קרוסלה</option>
+                <option value="stack">ערימת תמונות</option>
+              </select>
+            </label>
+
+            <div className="galleryActions">
+              <span>{hasGallery ? `${gallery.items.length} תמונות נטענו` : "אין גלריה לשקף"}</span>
+              <button type="button" onClick={() => onGalleryClear(selectedChapter.id)} disabled={!hasGallery}>
+                נקה גלריה
+              </button>
+            </div>
+          </div>
+
           <div className="tuneArrows" aria-label="הזזת הכרטיס">
-            <button type="button" onClick={() => change("top", -8)}>למעלה</button>
-            <button type="button" onClick={() => change("top", 8)}>למטה</button>
-            <button type="button" onClick={() => change("inlineStart", -8)}>ימינה</button>
-            <button type="button" onClick={() => change("inlineStart", 8)}>שמאלה</button>
+            <button type="button" onClick={() => change("top", -1.5)}>למעלה</button>
+            <button type="button" onClick={() => change("top", 1.5)}>למטה</button>
+            <button type="button" onClick={() => change("inlineStart", -1.5)}>ימינה</button>
+            <button type="button" onClick={() => change("inlineStart", 1.5)}>שמאלה</button>
+          </div>
+
+          <div className="tuneShapePresets" aria-label="שינוי צורת כרטיס הטקסט">
+            <button type="button" onClick={() => setPanelShape("wide")}>מלבן רחב</button>
+            <button type="button" onClick={() => setPanelShape("square")}>ריבוע</button>
+            <button type="button" onClick={() => setPanelShape("tall")}>צר וגבוה</button>
+            <button type="button" onClick={() => setPanelShape("compact")}>קומפקטי</button>
+          </div>
+
+          <div className="tuneTextTone" aria-label="מצב קריאות טקסט">
+            <span>קריאות טקסט על תמונה</span>
+            <button type="button" className={Math.round(tune.textTone) === 0 ? "active" : ""} onClick={() => setTextTone(0)}>
+              כהה
+            </button>
+            <button type="button" className={Math.round(tune.textTone) === 1 ? "active" : ""} onClick={() => setTextTone(1)}>
+              לבן עם צל
+            </button>
+            <button type="button" className={Math.round(tune.textTone) === 2 ? "active" : ""} onClick={() => setTextTone(2)}>
+              כהה עם הילה
+            </button>
           </div>
 
           <TuneControl label="רוחב" value={tune.width} onMinus={() => change("width", -20)} onPlus={() => change("width", 20)} />
+          <TuneControl label="גובה" value={tune.height} onMinus={() => change("height", -20)} onPlus={() => change("height", 20)} />
           <TuneControl label="כותרת" value={tune.titleSize} onMinus={() => change("titleSize", -2)} onPlus={() => change("titleSize", 2)} />
           <TuneControl label="טקסט" value={tune.leadSize} onMinus={() => change("leadSize", -1)} onPlus={() => change("leadSize", 1)} />
           <TuneControl label="מספרים" value={tune.statSize} onMinus={() => change("statSize", -2)} onPlus={() => change("statSize", 2)} />
@@ -556,10 +843,12 @@ function SlideTunePanel({ tunes, images, selectedSlideId, onSelectSlide, onTune,
   );
 }
 
-function ChapterSection({ chapter, index, heroContentVisible, isActive }) {
+function ChapterSection({ chapter, index, heroContentVisible, isActive, isEditMode, onPanelDrag }) {
   const isHero = chapter.theme === "hero";
+  const galleryImages = chapter.gallery?.items || [];
+  const hasGallery = galleryImages.length > 0;
   const backgroundImage = chapter.uploadedImage || chapter.image;
-  const hasFullBleedImage = Boolean(backgroundImage) && !isHero;
+  const hasFullBleedImage = (hasGallery || Boolean(backgroundImage)) && !isHero;
   const isManual = chapter.layout === "manualBand";
   const reverse = index % 2 === 0 && !isHero;
   const panelClasses = [
@@ -571,7 +860,77 @@ function ChapterSection({ chapter, index, heroContentVisible, isActive }) {
     chapter.quote ? "hasQuote" : "",
     chapter.comparison ? "hasComparison" : "",
     chapter.bullets ? "hasBullets" : "",
+    chapter.featureCards ? "hasFeatureCards" : "",
+    chapter.lead ? "" : "noLead",
   ].filter(Boolean).join(" ");
+  const startDrag = (event) => {
+    if (!isEditMode) return;
+    if (event.button !== undefined && event.button !== 0) return;
+
+    const section = event.currentTarget.closest(".chapter");
+    const panelGrid = event.currentTarget.closest(".manualGrid");
+    if (!section || !panelGrid) return;
+
+    event.preventDefault();
+    event.currentTarget.setPointerCapture?.(event.pointerId);
+
+    const sectionRect = section.getBoundingClientRect();
+    const gridRect = panelGrid.getBoundingClientRect();
+    const offsetY = event.clientY - gridRect.top;
+    const offsetFromRight = gridRect.right - event.clientX;
+
+    const move = (moveEvent) => {
+      const nextTop = ((moveEvent.clientY - sectionRect.top - offsetY) / sectionRect.height) * 100;
+      const nextInlineStart = ((sectionRect.right - moveEvent.clientX - offsetFromRight) / sectionRect.width) * 100;
+      onPanelDrag(chapter.id, {
+        top: clampTuneValue("top", nextTop),
+        inlineStart: clampTuneValue("inlineStart", nextInlineStart),
+      });
+    };
+
+    const stop = () => {
+      window.removeEventListener("pointermove", move);
+      window.removeEventListener("pointerup", stop);
+      window.removeEventListener("pointercancel", stop);
+    };
+
+    window.addEventListener("pointermove", move);
+    window.addEventListener("pointerup", stop, { once: true });
+    window.addEventListener("pointercancel", stop, { once: true });
+  };
+  const startResize = (event) => {
+    if (!isEditMode) return;
+    if (event.button !== undefined && event.button !== 0) return;
+
+    const panelGrid = event.currentTarget.closest(".manualGrid");
+    if (!panelGrid) return;
+
+    event.preventDefault();
+    event.currentTarget.setPointerCapture?.(event.pointerId);
+
+    const gridRect = panelGrid.getBoundingClientRect();
+    const startX = event.clientX;
+    const startY = event.clientY;
+
+    const resize = (moveEvent) => {
+      const nextWidth = gridRect.width + startX - moveEvent.clientX;
+      const nextHeight = gridRect.height + moveEvent.clientY - startY;
+      onPanelDrag(chapter.id, {
+        width: clampTuneValue("width", nextWidth),
+        height: clampTuneValue("height", nextHeight),
+      });
+    };
+
+    const stop = () => {
+      window.removeEventListener("pointermove", resize);
+      window.removeEventListener("pointerup", stop);
+      window.removeEventListener("pointercancel", stop);
+    };
+
+    window.addEventListener("pointermove", resize);
+    window.addEventListener("pointerup", stop, { once: true });
+    window.addEventListener("pointercancel", stop, { once: true });
+  };
 
   return (
     <section
@@ -585,7 +944,9 @@ function ChapterSection({ chapter, index, heroContentVisible, isActive }) {
       </div>
       {isHero && (
         <div className="heroBackdrop" aria-hidden="true">
-          {chapter.uploadedImage ? (
+          {hasGallery ? (
+            <SlideMedia images={galleryImages} mode={chapter.gallery.mode} />
+          ) : chapter.uploadedImage ? (
             <img className="heroImage" src={chapter.uploadedImage} alt="" />
           ) : (
             <video className="heroVideo" src="/intro-avsha.mp4" autoPlay muted playsInline preload="auto" />
@@ -595,16 +956,40 @@ function ChapterSection({ chapter, index, heroContentVisible, isActive }) {
       )}
       {hasFullBleedImage && (
         <div className="fullBleedMedia" aria-hidden="true">
-          <img src={backgroundImage} alt="" />
+          {hasGallery ? (
+            <SlideMedia images={galleryImages} mode={chapter.gallery.mode} />
+          ) : (
+            <img src={backgroundImage} alt="" />
+          )}
           <div className="fullBleedOverlay" />
         </div>
       )}
       <div className={`chapterGrid ${hasFullBleedImage ? "fullBleedGrid" : ""} ${isManual ? "manualGrid" : ""} ${reverse ? "reverse" : ""}`}>
         {!isHero && !hasFullBleedImage && !isManual && <VisualSlot text={chapter.visual} index={index} tone={chapter.tone} image={chapter.image} />}
+        {isManual && isEditMode && (
+          <>
+            <button
+              className="dragHandle"
+              type="button"
+              onPointerDown={startDrag}
+              aria-label={`גרירת טקסט שקף ${index + 1}`}
+              title="גרור כדי למקם את הטקסט"
+            >
+              גרור טקסט
+            </button>
+            <button
+              className="resizeHandle"
+              type="button"
+              onPointerDown={startResize}
+              aria-label={`שינוי גודל כרטיס טקסט שקף ${index + 1}`}
+              title="גרור כדי לשנות רוחב וגובה"
+            />
+          </>
+        )}
         <div className={panelClasses}>
           <span className="kicker motion childMotion">{chapter.kicker}</span>
           <h1 className="motion childMotion">{chapter.title}</h1>
-          <p className="lead motion childMotion">{chapter.lead}</p>
+          {chapter.lead && <p className="lead motion childMotion">{chapter.lead}</p>}
 
           {chapter.tags && (
             <div className="chips">
@@ -629,6 +1014,17 @@ function ChapterSection({ chapter, index, heroContentVisible, isActive }) {
             <blockquote className="memorialQuote motion childMotion">
               {chapter.quote}
             </blockquote>
+          )}
+
+          {chapter.featureCards && (
+            <div className="featureCards">
+              {chapter.featureCards.map(([icon, text], itemIndex) => (
+                <article className="featureCard motion childMotion" style={{ "--delay": `${itemIndex * 90}ms` }} key={text}>
+                  <FeatureIcon type={icon} />
+                  <span>{text}</span>
+                </article>
+              ))}
+            </div>
           )}
 
           {chapter.comparison && (
@@ -669,10 +1065,14 @@ function ChapterSection({ chapter, index, heroContentVisible, isActive }) {
 
 function App() {
   const { progress, activeStep } = useScrollStory(chapters.length);
+  const [jokeIntroComplete, setJokeIntroComplete] = useState(false);
   const [heroContentVisible, setHeroContentVisible] = useState(false);
   const [introComplete, setIntroComplete] = useState(false);
+  const [isEditMode, setIsEditMode] = useState(false);
   const [slideTunes, setSlideTunes] = useState(loadSlideTunes);
   const [slideImages, setSlideImages] = useState(loadSlideImages);
+  const [slideGalleries, setSlideGalleries] = useState(loadSlideGalleries);
+  const [presentationSettings, setPresentationSettings] = useState(loadPresentationSettings);
   const [selectedSlideId, setSelectedSlideId] = useState("business");
   useScrollReveal();
   useMorphNavigation();
@@ -690,21 +1090,40 @@ function App() {
     }
   }, [slideImages]);
 
+  useEffect(() => {
+    try {
+      localStorage.setItem(slideGalleryStorageKey, JSON.stringify(slideGalleries));
+    } catch {
+      // Very large galleries can exceed browser storage; they still remain available in memory.
+    }
+  }, [slideGalleries]);
+
+  useEffect(() => {
+    localStorage.setItem(presentationSettingsStorageKey, JSON.stringify(presentationSettings));
+  }, [presentationSettings]);
+
   const tunedChapters = chapters.map((chapter) =>
     {
       const tune = slideTunes[chapter.id] || defaultSlideTune;
       return {
         ...chapter,
         uploadedImage: slideImages[chapter.id],
+        gallery: slideGalleries[chapter.id],
         layout: "manualBand",
-        manualStyle: buildManualStyle(tune),
+        manualStyle: buildManualStyle(tune, chapter),
       };
     }
   );
 
   return (
-    <div className="app">
-      {!introComplete && (
+    <div className={`app ${isEditMode ? "editMode" : ""}`}>
+      {!jokeIntroComplete && presentationSettings.jokeIntroEnabled && (
+        <JokeVideoGate
+          enabled={presentationSettings.jokeIntroEnabled}
+          onComplete={() => setJokeIntroComplete(true)}
+        />
+      )}
+      {!introComplete && (jokeIntroComplete || !presentationSettings.jokeIntroEnabled) && (
         <IntroVideoGate
           onComplete={() => {
             setIntroComplete(true);
@@ -714,12 +1133,19 @@ function App() {
       )}
       <Topbar progress={progress} />
       <StoryTimeline activeStep={activeStep} />
+      <EditModeToggle
+        isEditMode={isEditMode}
+        onToggle={() => setIsEditMode((currentValue) => !currentValue)}
+      />
       <SlideTunePanel
         tunes={slideTunes}
         images={slideImages}
+        galleries={slideGalleries}
+        presentationSettings={presentationSettings}
         selectedSlideId={selectedSlideId}
         onSelectSlide={setSelectedSlideId}
         onTune={setSlideTunes}
+        onPresentationSettingsChange={setPresentationSettings}
         onReset={(slideId) =>
           setSlideTunes((currentTunes) => ({
             ...currentTunes,
@@ -739,6 +1165,37 @@ function App() {
             return nextImages;
           })
         }
+        onGalleryLoad={(slideId, imageDataUrls) =>
+          setSlideGalleries((currentGalleries) => {
+            const currentGallery = currentGalleries[slideId] || { items: [], mode: "fade" };
+            return {
+              ...currentGalleries,
+              [slideId]: {
+                ...currentGallery,
+                items: [...(currentGallery.items || []), ...imageDataUrls],
+              },
+            };
+          })
+        }
+        onGalleryClear={(slideId) =>
+          setSlideGalleries((currentGalleries) => {
+            const nextGalleries = { ...currentGalleries };
+            delete nextGalleries[slideId];
+            return nextGalleries;
+          })
+        }
+        onGalleryModeChange={(slideId, mode) =>
+          setSlideGalleries((currentGalleries) => {
+            const currentGallery = currentGalleries[slideId] || { items: [], mode: "fade" };
+            return {
+              ...currentGalleries,
+              [slideId]: {
+                ...currentGallery,
+                mode,
+              },
+            };
+          })
+        }
       />
       <main>
         {tunedChapters.map((chapter, index) => (
@@ -748,6 +1205,16 @@ function App() {
             index={index}
             heroContentVisible={heroContentVisible}
             isActive={index === activeStep}
+            isEditMode={isEditMode}
+            onPanelDrag={(slideId, position) =>
+              setSlideTunes((currentTunes) => ({
+                ...currentTunes,
+                [slideId]: {
+                  ...(currentTunes[slideId] || defaultSlideTune),
+                  ...position,
+                },
+              }))
+            }
           />
         ))}
       </main>
