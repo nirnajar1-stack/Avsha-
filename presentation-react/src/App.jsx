@@ -1,5 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 
+const asset = (path) => `${import.meta.env.BASE_URL}${path.replace(/^\/+/, "")}`;
+
 const chapters = [
   {
     id: "top",
@@ -20,6 +22,15 @@ const chapters = [
     visual: "תמונה רגישה של אלון ז״ל או תמונה משפחתית, רק לפי הנחיה שלך",
     tone: "memorial",
     visualMode: "memory",
+    gallery: {
+      mode: "fade",
+      items: [
+        asset("images/alon-01.png"),
+        asset("images/alon-02.png"),
+        asset("images/alon-03.png"),
+        asset("images/alon-04.png"),
+      ],
+    },
     quote: "אלון היה בן, אח, דוד וחבר אהוב. אדם בעל לב רחב, מסירות אין קץ למשפחתו ותחושת אחריות עמוקה.",
     bullets: [
       "במהלך תקופת השבי הפגין אלון תושייה, אומץ לב ורוח רצון יוצאי דופן.",
@@ -36,8 +47,15 @@ const chapters = [
     title: "אבשה פתרונות אריזה",
     lead: "העסק היה ועודנו הרבה מעבר למקור פרנסה - הוא מפעל חיים משפחתי המבטא ערכים של עבודה קשה, ציונות, מחויבות לקהילה ואמונה בתעשייה הישראלית.",
     visual: "חזית העסק, פעילות ייצור, אריזות עץ או תמונה משפחתית מהמפעל",
-    image: "/images/02-business-front.jpg.jpeg",
+    image: asset("images/business-01.jpg"),
     visualMode: "roots",
+    gallery: {
+      mode: "fade",
+      items: [
+        asset("images/business-01.jpg"),
+        asset("images/business-02.jpg"),
+      ],
+    },
     bullets: [
       "אבי שמריז - יו”ר",
       "יונתן שמריז - מנכ”ל משותף",
@@ -55,7 +73,18 @@ const chapters = [
     title: "אירועי ה־7 באוקטובר",
     lead: "אירועי ה־7 באוקטובר פגעו באופן קשה ומשמעותי בחברת אבשה ובמשפחת שמריז. במקביל להתמודדות עם חטיפתו של אלון ז”ל ולאחר מכן עם האובדן הקשה של המשפחה, ספג העסק פגיעה ישירה.",
     visual: "תמונה חזקה של נזק, סחורה, מפעל סגור או פתיחה מחדש",
+    image: asset("images/october-00.png"),
     visualMode: "crisis",
+    gallery: {
+      mode: "fade",
+      items: [
+        asset("images/october-01.jpg"),
+        asset("images/october-02.jpg"),
+        asset("images/october-03.jpg"),
+        asset("images/october-04.jpg"),
+        asset("images/october-05.jpg"),
+      ],
+    },
     bullets: [
       "מתחם החברה נבזז על ידי פורעים וניזוק ממתקפת הטילים.",
       "חלק מעובדי החברה נרצחו או נחטפו.",
@@ -73,7 +102,14 @@ const chapters = [
     title: "פיתוח עסקי עתידי",
     lead: "למרות האובדן והקשיים, משפחת שמריז בוחרת להמשיך קדימה ולפעול לשיקום העסק. עבור בני המשפחה, שיקום החברה אינו רק מהלך כלכלי - זהו המשך דרכו של אלון ז”ל והנצחת חלקו במפעל החיים המשפחתי.",
     visual: "תמונת חזרה לעבודה, ציוד חדש, צוות מקצועי או תכנון עתידי של החברה",
+    image: asset("images/future-00.jpg"),
     visualMode: "rebuild",
+    gallery: {
+      mode: "fade",
+      items: [
+        asset("images/future-01.png"),
+      ],
+    },
     featureCards: [
       ["growth", "בניית תשתית לצמיחה ארוכת טווח"],
       ["clients", "הרחבת פעילות החברה וגיוס לקוחות חדשים"],
@@ -87,11 +123,6 @@ const chapters = [
 const slideTuneStorageKey = "avsha-slide-panel-tunes-v3";
 const slideImageStorageKey = "avsha-slide-panel-images";
 const slideGalleryStorageKey = "avsha-slide-panel-galleries";
-const presentationSettingsStorageKey = "avsha-presentation-settings";
-
-const defaultPresentationSettings = {
-  jokeIntroEnabled: true,
-};
 
 const defaultSlideTune = {
   top: 14,
@@ -104,6 +135,14 @@ const defaultSlideTune = {
   opacity: 64,
   blur: 18,
   textTone: 0,
+};
+
+const publishedSlideTunes = {
+  top: {},
+  alon: {},
+  business: {},
+  october: {},
+  future: {},
 };
 
 const tuneLimits = {
@@ -134,7 +173,9 @@ function cleanTune(tune = {}) {
 }
 
 function createDefaultSlideTunes() {
-  return Object.fromEntries(chapters.map((chapter) => [chapter.id, cleanTune()]));
+  return Object.fromEntries(
+    chapters.map((chapter) => [chapter.id, cleanTune(publishedSlideTunes[chapter.id])])
+  );
 }
 
 function loadSlideTunes() {
@@ -174,14 +215,42 @@ function loadSlideGalleries() {
   }
 }
 
-function loadPresentationSettings() {
-  try {
-    const savedSettings = JSON.parse(localStorage.getItem(presentationSettingsStorageKey));
-    if (!savedSettings || typeof savedSettings !== "object") return defaultPresentationSettings;
-    return { ...defaultPresentationSettings, ...savedSettings };
-  } catch {
-    return defaultPresentationSettings;
-  }
+function sanitizeImportedGalleries(galleries = {}) {
+  if (!galleries || typeof galleries !== "object") return {};
+
+  return Object.fromEntries(
+    chapters
+      .map((chapter) => {
+        const gallery = galleries[chapter.id];
+        if (!gallery || typeof gallery !== "object") return null;
+
+        const items = Array.isArray(gallery.items)
+          ? gallery.items.filter((item) => typeof item === "string")
+          : [];
+        if (!items.length) return null;
+
+        return [
+          chapter.id,
+          {
+            mode: ["fade", "gallery", "carousel", "stack"].includes(gallery.mode) ? gallery.mode : "fade",
+            items,
+          },
+        ];
+      })
+      .filter(Boolean)
+  );
+}
+
+function createSettingsSnapshot(tunes, images, galleries) {
+  return {
+    version: 1,
+    exportedAt: new Date().toISOString(),
+    tunes: Object.fromEntries(
+      chapters.map((chapter) => [chapter.id, cleanTune(tunes[chapter.id])])
+    ),
+    images,
+    galleries,
+  };
 }
 
 function buildManualStyle(tune, chapter = {}) {
@@ -393,7 +462,7 @@ function useMorphNavigation() {
 
 function IntroVideoGate({ onComplete }) {
   const [isDone, setIsDone] = useState(false);
-  const [isMuted, setIsMuted] = useState(false);
+  const [isMuted, setIsMuted] = useState(true);
   const videoRef = useRef(null);
 
   useEffect(() => {
@@ -426,7 +495,7 @@ function IntroVideoGate({ onComplete }) {
       <video
         ref={videoRef}
         className="introVideo"
-        src="/intro-avsha.mp4"
+        src={asset("intro-avsha.mp4")}
         autoPlay
         muted={isMuted}
         playsInline
@@ -444,64 +513,6 @@ function IntroVideoGate({ onComplete }) {
   );
 }
 
-function JokeVideoGate({ enabled, onComplete }) {
-  const [isDone, setIsDone] = useState(!enabled);
-  const [isMuted, setIsMuted] = useState(false);
-  const videoRef = useRef(null);
-
-  useEffect(() => {
-    if (!enabled) {
-      onComplete();
-      return;
-    }
-
-    window.scrollTo({ top: 0, left: 0, behavior: "instant" });
-    const fallbackTimer = window.setTimeout(() => complete(), 14000);
-    return () => window.clearTimeout(fallbackTimer);
-  }, [enabled]);
-
-  const complete = () => {
-    setIsDone((currentValue) => {
-      if (currentValue) return currentValue;
-      window.setTimeout(onComplete, 360);
-      return true;
-    });
-  };
-  const toggleSound = () => {
-    const video = videoRef.current;
-    if (!video) return;
-    video.muted = !video.muted;
-    video.volume = 1;
-    video.play().catch(() => {});
-    setIsMuted(video.muted);
-  };
-
-  if (!enabled) return null;
-
-  return (
-    <div className={`jokeGate ${isDone ? "isDone" : ""}`} aria-label="סרטון בדיחה לפתיחה">
-      <video
-        ref={videoRef}
-        className="jokeVideo"
-        src="/joke-intro.mp4"
-        autoPlay
-        muted={isMuted}
-        playsInline
-        preload="auto"
-        onEnded={complete}
-        onError={complete}
-      />
-      <div className="jokeBadge">רגע לפני שמתחילים...</div>
-      <button type="button" className="videoSoundToggle" onClick={toggleSound}>
-        {isMuted ? "הפעל סאונד" : "כבה סאונד"}
-      </button>
-      <button type="button" className="jokeSkip" onClick={complete}>
-        דלג
-      </button>
-    </div>
-  );
-}
-
 function Topbar({ progress }) {
   const navItems = chapters;
 
@@ -511,10 +522,10 @@ function Topbar({ progress }) {
         <a className="brand" href="#top" aria-label="חזרה להתחלה">
           <span className="brandLogos">
             <span className="brandMark imageMark">
-              <img src="/logo-top.png" alt="לוגו אבשה" />
+              <img src={asset("logo-top.png")} alt="לוגו אבשה" />
             </span>
             <span className="partnerMark">
-              <img src="/logo-minhelet.png" alt="לוגו מנהלת" />
+              <img src={asset("logo-minhelet.png")} alt="לוגו מנהלת" />
             </span>
           </span>
           <span>
@@ -673,17 +684,17 @@ function SlideTunePanel({
   tunes,
   images,
   galleries,
-  presentationSettings,
   selectedSlideId,
   onSelectSlide,
   onTune,
-  onPresentationSettingsChange,
   onReset,
   onImageLoad,
   onImageClear,
   onGalleryLoad,
   onGalleryClear,
   onGalleryModeChange,
+  onSettingsExport,
+  onSettingsImport,
 }) {
   const [isOpen, setIsOpen] = useState(false);
   const selectedChapter = chapters.find((chapter) => chapter.id === selectedSlideId) || chapters[0];
@@ -753,6 +764,13 @@ function SlideTunePanel({
     onGalleryLoad(selectedChapter.id, imageDataUrls);
     event.target.value = "";
   };
+  const loadSettings = (event) => {
+    const file = event.target.files?.[0];
+    if (!file) return;
+
+    onSettingsImport(file);
+    event.target.value = "";
+  };
 
   return (
     <aside className={`tunePanel ${isOpen ? "isOpen" : ""}`} aria-label="כוונון ידני לשקפים">
@@ -763,22 +781,17 @@ function SlideTunePanel({
       {isOpen && (
         <div className="tuneBox">
           <strong>הזזת טקסט לפי שקף</strong>
-          <p>בחר שקף, כוון אותו ידנית, והערכים יישמרו בדפדפן.</p>
+          <p>בחר שקף, כוון אותו ידנית, והערכים יישמרו בדפדפן. ל-deployment או מחשב אחר אפשר לייצא ולייבא snapshot.</p>
 
           <div className="tuneGlobalActions">
-            <span>סרטון בדיחה בתחילת המצגת</span>
-            <button
-              type="button"
-              className={presentationSettings.jokeIntroEnabled ? "active" : ""}
-              onClick={() =>
-                onPresentationSettingsChange((currentSettings) => ({
-                  ...currentSettings,
-                  jokeIntroEnabled: !currentSettings.jokeIntroEnabled,
-                }))
-              }
-            >
-              {presentationSettings.jokeIntroEnabled ? "פעיל - לחץ לכיבוי" : "כבוי - לחץ להפעלה"}
+            <span>גיבוי הגדרות עריכה</span>
+            <button type="button" onClick={onSettingsExport}>
+              יצוא הגדרות
             </button>
+            <label>
+              יבוא הגדרות
+              <input type="file" accept="application/json,.json" onChange={loadSettings} />
+            </label>
           </div>
 
           <label className="tuneSelect">
@@ -977,7 +990,7 @@ function ChapterSection({ chapter, index, heroContentVisible, isActive, isEditMo
           ) : chapter.uploadedImage ? (
             <img className="heroImage" src={chapter.uploadedImage} alt="" />
           ) : (
-            <video className="heroVideo" src="/intro-avsha.mp4" autoPlay muted playsInline preload="auto" />
+            <video className="heroVideo" src={asset("intro-avsha.mp4")} autoPlay muted playsInline preload="auto" />
           )}
           <div className="heroVideoOverlay" />
         </div>
@@ -1093,14 +1106,12 @@ function ChapterSection({ chapter, index, heroContentVisible, isActive, isEditMo
 
 function App() {
   const { progress, activeStep } = useScrollStory(chapters.length);
-  const [jokeIntroComplete, setJokeIntroComplete] = useState(false);
   const [heroContentVisible, setHeroContentVisible] = useState(false);
   const [introComplete, setIntroComplete] = useState(false);
   const [isEditMode, setIsEditMode] = useState(false);
   const [slideTunes, setSlideTunes] = useState(loadSlideTunes);
   const [slideImages, setSlideImages] = useState(loadSlideImages);
   const [slideGalleries, setSlideGalleries] = useState(loadSlideGalleries);
-  const [presentationSettings, setPresentationSettings] = useState(loadPresentationSettings);
   const [selectedSlideId, setSelectedSlideId] = useState("business");
   useScrollReveal();
   useMorphNavigation();
@@ -1126,9 +1137,46 @@ function App() {
     }
   }, [slideGalleries]);
 
-  useEffect(() => {
-    localStorage.setItem(presentationSettingsStorageKey, JSON.stringify(presentationSettings));
-  }, [presentationSettings]);
+  const exportEditorSettings = () => {
+    const snapshot = createSettingsSnapshot(slideTunes, slideImages, slideGalleries);
+    const blob = new Blob([JSON.stringify(snapshot, null, 2)], { type: "application/json" });
+    const url = URL.createObjectURL(blob);
+    const link = document.createElement("a");
+
+    link.href = url;
+    link.download = "avsha-presentation-settings.json";
+    link.click();
+    URL.revokeObjectURL(url);
+  };
+  const importEditorSettings = (file) => {
+    const reader = new FileReader();
+
+    reader.addEventListener("load", () => {
+      try {
+        const snapshot = JSON.parse(reader.result);
+        if (!snapshot || typeof snapshot !== "object") return;
+
+        const defaultTunes = createDefaultSlideTunes();
+        const nextTunes = Object.fromEntries(
+          chapters.map((chapter) => [
+            chapter.id,
+            cleanTune(snapshot.tunes?.[chapter.id] || defaultTunes[chapter.id]),
+          ])
+        );
+
+        setSlideTunes(nextTunes);
+        setSlideImages(
+          snapshot.images && typeof snapshot.images === "object" && !Array.isArray(snapshot.images)
+            ? snapshot.images
+            : {}
+        );
+        setSlideGalleries(sanitizeImportedGalleries(snapshot.galleries));
+      } catch {
+        window.alert("קובץ ההגדרות לא תקין");
+      }
+    });
+    reader.readAsText(file);
+  };
 
   const tunedChapters = chapters.map((chapter) =>
     {
@@ -1136,7 +1184,7 @@ function App() {
       return {
         ...chapter,
         uploadedImage: slideImages[chapter.id],
-        gallery: slideGalleries[chapter.id],
+        gallery: slideGalleries[chapter.id] || chapter.gallery,
         layout: "manualBand",
         manualStyle: buildManualStyle(tune, chapter),
       };
@@ -1145,13 +1193,7 @@ function App() {
 
   return (
     <div className={`app ${isEditMode ? "editMode" : ""}`}>
-      {!jokeIntroComplete && presentationSettings.jokeIntroEnabled && (
-        <JokeVideoGate
-          enabled={presentationSettings.jokeIntroEnabled}
-          onComplete={() => setJokeIntroComplete(true)}
-        />
-      )}
-      {!introComplete && (jokeIntroComplete || !presentationSettings.jokeIntroEnabled) && (
+      {!introComplete && (
         <IntroVideoGate
           onComplete={() => {
             setIntroComplete(true);
@@ -1169,11 +1211,9 @@ function App() {
         tunes={slideTunes}
         images={slideImages}
         galleries={slideGalleries}
-        presentationSettings={presentationSettings}
         selectedSlideId={selectedSlideId}
         onSelectSlide={setSelectedSlideId}
         onTune={setSlideTunes}
-        onPresentationSettingsChange={setPresentationSettings}
         onReset={(slideId) =>
           setSlideTunes((currentTunes) => ({
             ...currentTunes,
@@ -1224,6 +1264,8 @@ function App() {
             };
           })
         }
+        onSettingsExport={exportEditorSettings}
+        onSettingsImport={importEditorSettings}
       />
       <main>
         {tunedChapters.map((chapter, index) => (
